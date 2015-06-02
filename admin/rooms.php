@@ -156,7 +156,7 @@ if ($action == 'editar') {
 		$editroom->capacidad = $fromform->cap;
 		$editroom->tipo = $fromform->roomType;
 		
-		// adit rooms with the new edit data
+		// edit rooms with the new edit data
 		$DB->update_record ( 'reservasalas_salas', $editroom );
 		$resources = $DB->get_records ( 'reservasalas_recursos' );
 		foreach ( $resources as $resource ) {
@@ -167,8 +167,8 @@ if ($action == 'editar') {
 					'tipo' => $fromform->roomType 
 			) );
 			// $resourcechange = $DB->get_records('reservasalas_salarecursos', array('salas_id' => $room_id->id));
-			// condicionar si existia o no el recurso seleccionado en el formulario de edicion
-			// Se agrega o no la relacion sala-recurso
+			//check if exist or not the resourse select in the edit form
+			//add or not the reosurse-room relationship
 			if ($_REQUEST [$conditional] == '1') { // --> TODO, change request form
 				if ($DB->get_records ( 'reservasalas_salarecursos', array (
 						'recursos_id' => $conditional,

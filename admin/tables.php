@@ -158,7 +158,7 @@ class tables {
 		return $table;
 	}
 	// Utilizado en sedes.php, tabla que lista todas las sedes existentes.
-	public static function get_places() {
+	public static function get_campus() {
 		global $DB, $OUTPUT;
 		$places = $DB->get_records ( 'reservasalas_sedes' );
 		
@@ -168,7 +168,7 @@ class tables {
 				get_string ( 'adjustments', 'local_reservasalas' ) 
 		);
 		foreach ( $places as $campus ) {
-			$deleteurl_sedes = new moodle_url ( 'sedes.php', array (
+			$deleteurl_sedes = new moodle_url ( 'campus.php', array (
 					'action' => 'borrar',
 					'idsede' => $campus->id,
 					'sesskey' => sesskey () 
@@ -176,7 +176,7 @@ class tables {
 			$deleteicon_sedes = new pix_icon ( 't/delete', get_string ( 'remove', 'local_reservasalas' ) );
 			$deleteaction_sedes = $OUTPUT->action_icon ( $deleteurl_sedes, $deleteicon_sedes, new confirm_action ( get_string ( 'doyouwantdeletesite', 'local_reservasalas' ) ) );
 			
-			$editurl_sedes = new moodle_url ( 'sedes.php', array (
+			$editurl_sedes = new moodle_url ( 'campus.php', array (
 					'action' => 'editar',
 					'prevaction' => 'ver',
 					'idsede' => $campus->id,
